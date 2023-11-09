@@ -74,7 +74,7 @@ db.technologies.insert([
             {"code":"INET2005","name":"Web Application Programming I"},
             {"code":"WEBD3000","name":"Web Application Programming II"},
             {"code":"PROG3017","name":"Full Stack Programming"},
-            {"code":"APPD1001","name":"User Interface Design & Development"},
+            {"code":"APPD1001","name":"User Interface Design and Development"},
             {"code":"WEBD3027","name":"Developing for Content Management Systems"}
         ]
     },

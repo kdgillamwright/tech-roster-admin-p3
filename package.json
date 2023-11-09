@@ -1,0 +1,14 @@
+{
+  "name": "boilerplate-with-mongo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "setup": "npm install --prefix ./client"
+  },
+  "author": "Sean Morrow",
+  "license": "ISC",
+  "dependencies": {
+    "@types/react": "^18.0.37"
+  }
+}

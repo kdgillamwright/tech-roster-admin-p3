@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+  mongo:
+    build:
+      context: ./mongo
+      dockerfile: Dockerfile
+    image: mongo-server
+    container_name: my-mongo-server
+    volumes:
+      - data-volume:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: dbTechs
+    ports:
+      - "27017:27017"
+    networks:
+      - linkednetwork
+      
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.prod
+    image: client-server
+    container_name: my-client-server
+    command: npm run production
+    volumes:
+      - ./client:/usr/app/client
+      - node_modules_client:/usr/app/client/node_modules
+    depends_on:
+      - mongo
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - linkednetwork  
+
+volumes:
+  node_modules_client:
+  data-volume:
+
+networks:
+  linkednetwork:

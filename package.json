@@ -9,6 +9,7 @@
   "author": "Sean Morrow",
   "license": "ISC",
   "dependencies": {
-    "@types/react": "^18.0.37"
+    "@types/react": "^18.0.37",
+    "spinners-react": "^1.0.7"
   }
 }

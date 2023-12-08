@@ -1,21 +1,42 @@
-import { Technology } from "./../tools/data.model";
-import { getTechnologies } from "../tools/DataManager";
+import { Technology } from "../tools/technology.model";
+import { getData } from "../tools/DataManager";
+import { Course } from "@/tools/course.model";
+import Link from "next/link";
+import { List } from "@/components/List";
+import { useEffect } from "react";
+import { NextRouter, useRouter } from "next/router";
 
-export default function Home({technologies}:{technologies: Technology[]}) {
-  
+export default function Home({ technologies, courses }: { technologies: Technology[], courses: Course[] }) {
   return (
-    <div className="font-bold text-sm p-4">
-      <pre>
-        {JSON.stringify(technologies, null, "\t")}
-      </pre>
-    </div>
+    <>
+      <div className="flex flex-row flex-wrap">
+        {
+          //handling no technologies.
+          (technologies.length > 0) ?
+            <List type="technologies" items={technologies} />
+            :
+            <>There are currently no technologies in the database :(</>
+        }
+
+        {
+          // handling no courses
+          (courses.length > 0) ?
+            <List type="courses" items={courses} />
+            :
+            <>There are currently no courses in the database :(</>
+        }
+      </div>
+    </>
   )
 }
 
+//getting data
 export async function getStaticProps() {
+  const data = await getData()
   return {
     props: {
-      technologies: await getTechnologies()
+      technologies: data.technologies,
+      courses: data.courses
     }
-  } 
+  }
 }

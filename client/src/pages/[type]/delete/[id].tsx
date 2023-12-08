@@ -107,14 +107,16 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: { params: { id: string, type: string } }) {
   let data: Technology[] | Course[]
+  let item: Technology | Course | undefined;
 
   if (params.type === "technologies") {
     data = await getTechnologies();
+    item = data.find(item => item._id == params.id);
   } else {
     data = await getCourses();
+    item = data.find(item => item._id == params.id);
   }
 
-  let item: Technology | Course | undefined = data.find(item => item._id == params.id);
   return {
     props: {
       item: item,

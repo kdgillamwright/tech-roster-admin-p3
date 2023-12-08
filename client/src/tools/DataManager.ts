@@ -5,14 +5,14 @@ import { Technology, TechCourse } from "@/tools/technology.model";
 import { Course } from "@/tools/course.model";
 
 // MongoDB constants
-const MONGO_URL: string = "mongodb://mongo:27017/";
+const MY_MONGO_URL: string = process.env.MY_MONGO_URL || "mongodb://mongo:27017";
 const MONGO_DB_NAME: string = "dbTechs";
 const MONGO_COLLECTION_TECHS: string = "technologies";
 const MONGO_COLLECTION_COURSES: string = "courses";
 
 export async function getTechnologies() {
   // construct a MongoClient object
-  let mongoClient: MongoClient = new MongoClient(MONGO_URL);
+  let mongoClient: MongoClient = new MongoClient(MY_MONGO_URL);
 
   let techArray: Technology[];
   try {
@@ -33,7 +33,7 @@ export async function getTechnologies() {
 
 export async function getCourses() {
   // construct a MongoClient object
-  let mongoClient: MongoClient = new MongoClient(MONGO_URL);
+  let mongoClient: MongoClient = new MongoClient(MY_MONGO_URL);
 
   let courseArray: Course[];
   try {
@@ -61,7 +61,7 @@ export async function getData() {
 
 
 export async function createTechnology(request: NextApiRequest, response: NextApiResponse<any>) {
-  let mongoClient: MongoClient = new MongoClient(MONGO_URL);
+  let mongoClient: MongoClient = new MongoClient(MY_MONGO_URL);
   try {
     await mongoClient.connect();
 
@@ -91,7 +91,7 @@ export async function createTechnology(request: NextApiRequest, response: NextAp
 
 
 export async function createCourse(request: NextApiRequest, response: NextApiResponse<any>) {
-  let mongoClient: MongoClient = new MongoClient(MONGO_URL);
+  let mongoClient: MongoClient = new MongoClient(MY_MONGO_URL);
   try {
     await mongoClient.connect();
 
@@ -115,7 +115,7 @@ export async function createCourse(request: NextApiRequest, response: NextApiRes
 }
 
 export async function updateTechnology(request: NextApiRequest, response: NextApiResponse<any>) {
-  let mongoClient: MongoClient = new MongoClient(MONGO_URL);
+  let mongoClient: MongoClient = new MongoClient(MY_MONGO_URL);
   try {
     await mongoClient.connect();
 
@@ -157,7 +157,7 @@ export async function updateTechnology(request: NextApiRequest, response: NextAp
 }
 
 export async function updateCourse(request: NextApiRequest, response: NextApiResponse<any>) {
-  let mongoClient: MongoClient = new MongoClient(MONGO_URL);
+  let mongoClient: MongoClient = new MongoClient(MY_MONGO_URL);
   try {
     await mongoClient.connect();
 
@@ -194,7 +194,7 @@ export async function updateCourse(request: NextApiRequest, response: NextApiRes
 }
 
 export async function deleteTechnology(request: NextApiRequest, response: NextApiResponse<any>) {
-  let mongoClient: MongoClient = new MongoClient(MONGO_URL);
+  let mongoClient: MongoClient = new MongoClient(MY_MONGO_URL);
   try {
     await mongoClient.connect();
 
@@ -227,7 +227,7 @@ export async function deleteTechnology(request: NextApiRequest, response: NextAp
 }
 
 export async function deleteCourse(request: NextApiRequest, response: NextApiResponse<any>) {
-  let mongoClient: MongoClient = new MongoClient(MONGO_URL);
+  let mongoClient: MongoClient = new MongoClient(MY_MONGO_URL);
   try {
     await mongoClient.connect();
 

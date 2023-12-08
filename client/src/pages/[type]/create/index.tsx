@@ -70,7 +70,7 @@ export default function Create({ courses }: { courses: Course[] }) {
     // set time out for 1 second to test and see overlay.
     setTimeout(() => {
       setShowOverlay(false);
-      router.replace("/?")
+      router.replace("/")
     }, 1000);
   }
 
